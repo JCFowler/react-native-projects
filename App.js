@@ -1,21 +1,19 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
+import FoodSearchScreen from './src/projects/food-search/screens/FoodSearchScreen';
+import HomeScreen from './src/screens/HomeScreen';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+const navigator = createStackNavigator({
+    Home: HomeScreen,
+    // Basic Project:
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+    // Food Search Project:
+    FoodSearch: FoodSearchScreen,
+}, {
+    initialRouteName: 'Home',
+    defaultNavigationOptions: {
+        title: 'RN Projects'
+    }
 });
+
+export default createAppContainer(navigator);
