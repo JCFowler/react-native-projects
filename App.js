@@ -1,3 +1,4 @@
+import React from 'react';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import BasicHomeScreen from './src/projects/basic/screens/BasicHomeScreen';
@@ -11,6 +12,10 @@ import ImageScreen from './src/projects/basic/screens/ImageScreen';
 import NameScreen from './src/projects/basic/screens/NameScreen';
 import SingleColor from './src/projects/basic/screens/SingleColorScreen';
 import HomeScreen from './src/screens/HomeScreen';
+import BlogPostHomeScreen from './src/projects/blog-post/screens/BlogPostHomeScreen';
+import { Provider } from './src/projects/blog-post/context/BlogContext';
+import ShowBlogScreen from './src/projects/blog-post/screens/ShowBlogScreen';
+import CreateBlogScreen from './src/projects/blog-post/screens/CreateBlogScreen';
 
 const navigator = createStackNavigator({
     Home: HomeScreen,
@@ -29,6 +34,10 @@ const navigator = createStackNavigator({
     FoodSearch: FoodSearchScreen,
     RestaurantDetail: RestaurantDetailScreen,
 
+    // Blog Post Project:
+    BlogPostHome: BlogPostHomeScreen,
+    ShowBlog: ShowBlogScreen,
+    CreateBlog: CreateBlogScreen,
 }, {
     initialRouteName: 'Home',
     defaultNavigationOptions: {
@@ -36,4 +45,12 @@ const navigator = createStackNavigator({
     }
 });
 
-export default createAppContainer(navigator);
+const App = createAppContainer(navigator);
+
+export default () => {
+    return (
+        <Provider>
+            <App />
+        </Provider>
+    );
+}   
